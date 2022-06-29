@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_chat
+#    env_file: .env
+#    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+#    networks:
+#      - chat_app
+
+  go-chat:
+    build: ./
+#    command: ./go-chat
+    container_name: go_chat_app
+    restart: always
+    #    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_PASSWORD=12345
+#    networks:
+#      - chat_app
+
+
