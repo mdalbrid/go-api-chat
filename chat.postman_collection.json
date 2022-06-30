@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "e9642162-1fb4-43a1-b773-568d68b859b5",
+		"name": "chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21667780"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/chat/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"chat_name\": \"test1\",\n    \"author\": \"author\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/chat/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chat",
+						""
+					]
+				},
+				"description": "Создание чата"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/chat/{chat_id}/msg/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nickname\": \"nick\",\n    \"msg\": \"HI\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/chat/1/msg/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chat",
+						"1",
+						"msg",
+						""
+					]
+				},
+				"description": "Создание сообщения в чат с указание id чата"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/chat/{chat_id}/msg/?limit=№",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/chat/1/msg/?limit=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chat",
+						"1",
+						"msg",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Получение списка id сообщений из чата по его id, с указанием лимита вывода"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/chat/{chat_id}/msg/{msg_id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/chat/1/msg/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chat",
+						"1",
+						"msg",
+						"1"
+					]
+				},
+				"description": "Получение сообщения по id из чата по id"
+			},
+			"response": []
+		}
+	]
+}
