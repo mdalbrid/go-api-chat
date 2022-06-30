@@ -19,9 +19,6 @@ make docker_all && make migrate_up
 `/api/chat/{chat_id}/msg/{msg_id}` - ⠀GET<br>
 
 
-
-
-<br>
 <br>
 
 ----
