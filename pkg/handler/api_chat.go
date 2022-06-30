@@ -11,7 +11,7 @@ func (h *Handler) createChatHandler(c *gin.Context) {
 	var input go_chat.Chats
 
 	if err := c.BindJSON(&input); err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
 	}
 

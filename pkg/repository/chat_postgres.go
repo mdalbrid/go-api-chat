@@ -64,7 +64,7 @@ func (r *ChatPostgres) GetListIdMessages(chatId int, filter go_chat.FilterReques
 		query = fmt.Sprintf("%s LIMIT %d", query, filter.Limit)
 	}
 	if err := r.db.Select(&list, query, chatId); err != nil {
-		return list, err
+		return nil, err
 	}
 
 	return list, nil
