@@ -50,10 +50,6 @@ func (h *Handler) createMessageByIdChatHandler(c *gin.Context) {
 	})
 }
 
-type Struct struct {
-	Id []go_chat.Messages
-}
-
 func (h *Handler) getListIdMessagesHandler(c *gin.Context) {
 	chatId, err := strconv.Atoi(c.Param("chat_id"))
 	if err != nil {

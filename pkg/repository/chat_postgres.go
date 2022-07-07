@@ -16,11 +16,6 @@ func NewChatPostgres(db *sqlx.DB) *ChatPostgres {
 
 // CreateChat ...
 func (r *ChatPostgres) CreateChat(chat go_chat.Chats) (int, error) {
-	//tx, err := r.db.Begin()
-	//if err != nil {
-	//	return 0, err
-	//}
-
 	var id int
 
 	createChatQuery := fmt.Sprintf("INSERT INTO %s (chat_name, author) VALUES ($1, $2) RETURNING id", chatsTable)
@@ -29,14 +24,7 @@ func (r *ChatPostgres) CreateChat(chat go_chat.Chats) (int, error) {
 		return 0, err
 	}
 
-	//createUserQuery := fmt.Sprintf("INSERT INTO %s nickname VALUES $1", usersTable)
-	//tx.Exec(createUserQuery, chat.Author)
-	//if err != nil {
-	//	tx.Rollback()
-	//	return 0, err
-	//}
-
-	return id, nil //tx.Commit()
+	return id, nil
 }
 
 // CreateMessage ...
